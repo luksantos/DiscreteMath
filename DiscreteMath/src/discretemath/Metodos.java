@@ -13,7 +13,7 @@ import discretemath.LerTXT;
  * @author lucas
  */
 public class Metodos {
-    
+
     LerTXT lerTXT = new LerTXT();
     int conj1[] = LerTXT.conj1;
     int conj2[] = LerTXT.conj2;
@@ -134,6 +134,87 @@ public class Metodos {
             }
         }
         return aux.toString();
+    }
+
+    public String DiferencaConjuntos() {
+        Scanner ler = new Scanner(System.in);
+        int i, j, n, auxLeitura = 0;
+        String option = null;
+
+        do {
+            System.out.println("\n==Verificar ==");
+            System.out.println("|  1 = A - B");
+            System.out.println("|  2 = B - A");
+            System.out.print("Selecione a Opção:");
+            auxLeitura = ler.nextInt();
+
+            switch (auxLeitura) {
+                case 1:
+                    ArrayList<Integer> aux = new ArrayList();
+                    for (i = 0; i < conj1.length; i++) {
+                        for (j = 0; j < conj2.length;) {
+                            if (conj1[i] == conj2[j]) {
+                                i++;
+                            } else {
+                                aux.add(conj1[i]);
+                                break;
+                            }
+                        }
+                    }
+                    return option = aux.toString();
+                case 2:
+                    ArrayList<Integer> aux1 = new ArrayList();
+                    for (i = 0; i < conj2.length; i++) {
+                        for (j = 0; j < conj1.length; j++) {
+                            if (conj2[i] == conj1[j]) {
+                                i++;
+                            } else {
+                                aux1.add(conj2[i]);
+                                break;
+                            }
+                        }
+                    }
+                    return option = aux1.toString();
+            }
+        } while (auxLeitura != 0);
+        return option;
+    }
+
+    public String ProdutoCartesiano() {
+        Scanner ler = new Scanner(System.in);
+        int n, auxLeitura = 0;
+        do {
+            System.out.println("\n== Produtos ==");
+            System.out.println("|  1 = (AxB)");
+            System.out.println("|  2 = (BxA)");
+            System.out.print("Selecione a Opção:");
+            auxLeitura = ler.nextInt();
+
+            switch (auxLeitura) {
+                case 1:
+                    String aux = null;
+                    System.out.println("Produto Cartesiano (AxB):");
+                    for (int i = 0; i < conj1.length; i++) {
+                        for (int j = 0; j < conj2.length; j++) {
+                            aux = ("(" + conj1[i] + "," + conj2[j] + ")");
+                            System.out.print(aux);
+                        }
+                    }
+                    return "";
+                case 2:
+                    String aux1 = null;
+                    System.out.println("Produto Cartesiano (AxB):");
+                    for (int i = 0; i < conj2.length; i++) {
+                        for (int j = 0; j < conj1.length; j++) {
+                            aux1 = ("(" + conj2[i] + "," + conj1[j] + ")");
+                            System.out.print(aux1);
+                        }
+                    }
+                    return "";
+
+            }
+        } while (auxLeitura != 0);
+        return "";
     }
 
 }

@@ -36,6 +36,8 @@ public class DiscreteMath {
             System.out.println("|     3 - Contido Propriamente");
             System.out.println("|     4 - União");
             System.out.println("|     5 - Interceção");
+            System.out.println("|     6 - Diferença de Conjuntos");
+            System.out.println("|     7 - Produto Cartesiano");
             System.out.println("===================================\n");
             System.out.print("Selecione a Opção:");
             opcao = ler.nextInt();
@@ -55,6 +57,12 @@ public class DiscreteMath {
                     break;
                 case 5:
                     System.out.println("Interceção=" + metodo.Intercecao());
+                    break;
+                case 6:
+                    System.out.println("Diferença=" + metodo.DiferencaConjuntos());
+                    break;
+                case 7:
+                    System.out.println(metodo.ProdutoCartesiano());
                     break;
                 case 0:
                     break;
