@@ -7,6 +7,8 @@ package discretemath;
 
 import java.io.*;
 import java.util.*;
+import java.util.regex.Pattern;
+import java.util.Arrays;
 
 /**
  *
@@ -15,41 +17,44 @@ import java.util.*;
 public class DiscreteMath {
 
     public static void main(String[] args) throws Exception {
-
-        BufferedReader br = new BufferedReader(new FileReader("sets.txt"));
-        String txt;
-        while ((txt = br.readLine()) != null) {
-            System.out.println("\n" + txt);
-            String[] conjunto = txt.split("[ABCD=,{ }]");
-            for (String item : conjunto) {
-                System.out.println(item);
-            }
-        }
         
-        Conjunto conj = new Conjunto();
+        LerTXT lerTXT = new LerTXT();
+        lerTXT.LeituraTXT();
+//        System.out.println(Arrays.toString(lerTXT.conj1));
+//        System.out.println(Arrays.toString(lerTXT.conj2));
+        
+        Metodos metodo = new Metodos();
+        System.out.println(Arrays.toString(metodo.conj1));
+        System.out.println(Arrays.toString(metodo.conj2));
         Scanner ler = new Scanner(System.in);
         int opcao = 0;
         do {
-            System.out.println("\n\n### Menu ###");
-            System.out.println("\n===============================");
+            System.out.println("\n============== Menu ===============");
             System.out.println("|     0 - Sair");
             System.out.println("|     1 - Percente/Não Pertence");
-            System.out.println("|     2 - Contido/Igual");
-            System.out.println("|     3 - União");
-            System.out.println("=================================\n");
-            
+            System.out.println("|     2 - Contido/Não Contido");
+            System.out.println("|     3 - Contido Propriamente");
+            System.out.println("|     4 - União");
+            System.out.println("|     5 - Interceção");
+            System.out.println("===================================\n");
             System.out.print("Selecione a Opção:");
             opcao = ler.nextInt();
-            
+
             switch (opcao) {
                 case 1:
-                    System.out.println("Pertence: " + conj.Pertence());
+                    System.out.println("Pertence: " + metodo.Pertence());
                     break;
                 case 2:
-                    System.out.println("Contido/Igual: " + conj.ContidoIgual());
+                    System.out.println("Contido/Igual: " + metodo.ContidoIgual());
                     break;
-                case 3: 
-                    System.out.println("União: AUX=" + conj.União());
+                case 3:
+                    System.out.println("Conj. 1 é Contido Propriamente no Conj. 2: " + metodo.ContidoPropriamente());
+                    break;
+                case 4:
+                    System.out.println("União=" + metodo.União());
+                    break;
+                case 5:
+                    System.out.println("Interceção=" + metodo.Intercecao());
                     break;
                 case 0:
                     break;
@@ -58,9 +63,6 @@ public class DiscreteMath {
                     break;
             }
         } while (opcao != 0);
-
-        
-        
 
     }
 }

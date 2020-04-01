@@ -6,20 +6,19 @@
 package discretemath;
 
 import java.util.*;
+import discretemath.LerTXT;
 
 /**
  *
  * @author lucas
  */
-public class Conjunto {
-
-    int conj1[] = {3, 4, -1, 5};
-    int conj2[] = {4, 6, 7, 9};
+public class Metodos {
+    
+    LerTXT lerTXT = new LerTXT();
+    int conj1[] = LerTXT.conj1;
+    int conj2[] = LerTXT.conj2;
     //int conj2[] = {4, 3, 5, -1};
     Scanner ler = new Scanner(System.in);
-
-    public Conjunto() {
-    }
 
     public boolean Pertence() {
         Scanner ler = new Scanner(System.in);
@@ -52,7 +51,7 @@ public class Conjunto {
                     int j;
                     System.out.printf("Insira um Número:\n");
                     n = ler.nextInt();
-                    for (j = 0; j < conj1.length;) {
+                    for (j = 0; j < conj2.length;) {
                         if (n == conj2[j]) {
                             option = true;
                             break;
@@ -86,7 +85,7 @@ public class Conjunto {
         }
         return c;
     }
-    
+
     public boolean ContidoPropriamente() {
         boolean c = false;
         ArrayList<Integer> aux = new ArrayList();
