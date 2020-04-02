@@ -138,7 +138,7 @@ public class Metodos {
 
     public String DiferencaConjuntos() {
         Scanner ler = new Scanner(System.in);
-        int i, j, n, auxLeitura = 0;
+        int n, auxLeitura = 0;
         String option = null;
 
         do {
@@ -151,27 +151,29 @@ public class Metodos {
             switch (auxLeitura) {
                 case 1:
                     ArrayList<Integer> aux = new ArrayList();
-                    for (i = 0; i < conj1.length; i++) {
-                        for (j = 0; j < conj2.length;) {
-                            if (conj1[i] == conj2[j]) {
-                                i++;
-                            } else {
-                                aux.add(conj1[i]);
-                                break;
-                            }
+                    int cont = 0,
+                     cont1 = 0;
+                    for (int i = 0; i < conj1.length; i++) {
+                        if (conj2[cont1] == conj1[cont]) {
+                            cont++;
+                        } else {
+                            aux.add(conj1[cont]);
+                            cont++;
+                            cont1++;
                         }
                     }
                     return option = aux.toString();
                 case 2:
                     ArrayList<Integer> aux1 = new ArrayList();
-                    for (i = 0; i < conj2.length; i++) {
-                        for (j = 0; j < conj1.length; j++) {
-                            if (conj2[i] == conj1[j]) {
-                                i++;
-                            } else {
-                                aux1.add(conj2[i]);
-                                break;
-                            }
+                    int cont2 = 0,
+                     cont3 = 0;
+                    for (int i = 0; i < conj2.length; i++) {
+                        if (conj1[cont2] == conj2[cont3]) {
+                            cont3++;
+                        } else {
+                            aux1.add(conj2[cont3]);
+                            cont2++;
+                            cont3++;
                         }
                     }
                     return option = aux1.toString();
@@ -203,7 +205,7 @@ public class Metodos {
                     return "";
                 case 2:
                     String aux1 = null;
-                    System.out.println("Produto Cartesiano (AxB):");
+                    System.out.println("Produto Cartesiano (BxA):");
                     for (int i = 0; i < conj2.length; i++) {
                         for (int j = 0; j < conj1.length; j++) {
                             aux1 = ("(" + conj2[i] + "," + conj1[j] + ")");
@@ -212,6 +214,29 @@ public class Metodos {
                     }
                     return "";
 
+            }
+        } while (auxLeitura != 0);
+        return "";
+    }
+
+    public String ConjuntoPartes() {
+        ConjuntoPartes conjPart = new ConjuntoPartes();
+        Scanner ler = new Scanner(System.in);
+        int n, auxLeitura = 0;
+        do {
+            System.out.println("\n== Conj. das Partes ==");
+            System.out.println("|  1 = A");
+            System.out.println("|  2 = B");
+            System.out.print("Selecione a Opção:");
+            auxLeitura = ler.nextInt();
+
+            switch (auxLeitura) {
+                case 1:
+                    conjPart.ConjutoPartesA();
+                    return "";
+                case 2:
+                    conjPart.ConjutoPartesB();
+                    return "";
             }
         } while (auxLeitura != 0);
         return "";
